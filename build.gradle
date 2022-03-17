@@ -4,16 +4,14 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
     dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:latest.release'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:latest.release'
     }
 }
 
-apply plugin: 'groovy'
-//apply plugin: 'android-maven'
-//apply plugin: 'maven-publish'
-apply plugin: 'maven'
-//apply plugin: 'com.jfrog.bintray'
+plugins {
+    id 'groovy'
+    // id 'android-maven'
+    id 'maven-publish'
+}
 
 group = "com.github.forrest-x"
 version = "1.0.0"
@@ -158,12 +156,24 @@ task groovydocJar(type: Jar, dependsOn: groovydoc) {
     from groovydoc.destinationDir
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+            artifact groovydocJar
+        }
+    }
+}
+
+/*
+
 artifacts {
     archives groovydocJar
     archives sourcesJar
 }
 
-/*
 Properties properties = new Properties()
 properties.load(project.file('local.properties').newDataInputStream())
 
