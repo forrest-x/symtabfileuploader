@@ -17,8 +17,6 @@
 
 package com.tencent.bugly.gradle
 
-import com.android.builder.core.DefaultManifestParser
-import com.tencent.bugly.symtabtool.android.SymtabToolAndroid
 import org.apache.http.Consts
 import org.apache.http.HttpEntity
 import org.apache.http.HttpStatus
@@ -687,7 +685,8 @@ class BuglyPlugin implements Plugin<Project> {
         }
         // Get version name of "AndroidManifest.xml".
         if (null == versionName || versionName.isEmpty()) {
-            versionName = new DefaultManifestParser().getVersionName(project.android.sourceSets.main.manifest.srcFile)
+            //versionName = new DefaultManifestParser().getVersionName(project.android.sourceSets.main.manifest.srcFile)
+            throw new RuntimeException("versionName get failed..")
         }
         return versionName
     }
