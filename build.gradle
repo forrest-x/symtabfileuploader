@@ -11,8 +11,8 @@ buildscript {
 
 apply plugin: 'groovy'
 //apply plugin: 'android-maven'
-apply plugin: 'maven-publish'
-//apply plugin: 'maven'
+//apply plugin: 'maven-publish'
+apply plugin: 'maven'
 //apply plugin: 'com.jfrog.bintray'
 
 group = "com.github.forrest-x"
