@@ -12,6 +12,7 @@ buildscript {
 apply plugin: 'groovy'
 //apply plugin: 'android-maven'
 apply plugin: 'maven-publish'
+//apply plugin: 'maven'
 //apply plugin: 'com.jfrog.bintray'
 
 group = "com.github.tencent.bugly"
@@ -32,10 +33,38 @@ dependencies {
     compile 'org.apache.httpcomponents:httpmime:4.3.6'
     compile 'com.android.tools.build:gradle:1.2.3'
 }
+/*
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
 
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.github'
+                artifactId = 'symtabfileuploader'
+                version = '1.0'
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'com.github'
+                artifactId = 'symtabfileuploader'
+                version = '1.0'
+            }
+        }
+    }
+}
+
+ */
+/*
 def siteUrl = "https://github.com/JalenChen/SymtabFileUploader"
 def gitUrl = "https://github.com/JalenChen/SymtabFileUploader.git"
-/*
+
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -68,6 +97,7 @@ install {
 }
  */
 
+    /*
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -101,6 +131,7 @@ publishing {
         }
     }
 }
+     */
 
 task unzipSymbolToolJarToClasses(type: Copy) {
     from zipTree(buglySymbolAndroidJar)
@@ -131,6 +162,7 @@ artifacts {
     archives groovydocJar
     archives sourcesJar
 }
+
 /*
 Properties properties = new Properties()
 properties.load(project.file('local.properties').newDataInputStream())
