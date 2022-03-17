@@ -3,13 +3,10 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
-    dependencies {
-    }
 }
 
 plugins {
     id 'groovy'
-    // id 'android-maven'
     id 'maven-publish'
 }
 
@@ -24,12 +21,12 @@ dependencies {
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
-    compile gradleApi()
-    compile localGroovy()
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.apache.httpcomponents:httpclient:4.3.6'
-    compile 'org.apache.httpcomponents:httpmime:4.3.6'
-    compile 'com.android.tools.build:gradle:1.2.3'
+    compileOnly gradleApi()
+    compileOnly localGroovy()
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'org.apache.httpcomponents:httpclient:4.3.6'
+    compileOnly 'org.apache.httpcomponents:httpmime:4.3.6'
+    compileOnly 'com.android.tools.build:gradle:1.2.3'
 }
 /*
 afterEvaluate {
@@ -158,11 +155,8 @@ task groovydocJar(type: Jar, dependsOn: groovydoc) {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
             from components.java
-
-            artifact sourcesJar
-            artifact groovydocJar
         }
     }
 }

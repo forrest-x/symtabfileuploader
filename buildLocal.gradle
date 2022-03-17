@@ -5,24 +5,21 @@ version = "1.3.8"
 group = "com.tencent.bugly"
 archivesBaseName = 'symtabfileuploader'
 
-def symtabToolVersion = '2.3.1'
-def buglySymbolAndroidJar = "libs/buglySymbolAndroid${symtabToolVersion}.jar"
+def symtabToolVersion = '3.3.4'
+def buglySymbolAndroidJar = "libs/buglyqq-upload-symbol-${symtabToolVersion}.jar"
 
-dependencies {
-    compile gradleApi()
-    compile localGroovy()
-}
 
 dependencies {
     repositories {
-        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
     }
-    compile gradleApi()
-    compile localGroovy()
-    compile 'com.android.tools.build:gradle:1.0.0'
-    compile 'org.apache.httpcomponents:httpclient:4.3.6'
-    compile 'org.apache.httpcomponents:httpmime:4.3.6'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:1.0.0'
+    implementation 'org.apache.httpcomponents:httpclient:4.3.6'
+    implementation 'org.apache.httpcomponents:httpmime:4.3.6'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 task unzipSymbolToolJarToClasses(type: Copy) {
