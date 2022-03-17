@@ -703,7 +703,7 @@ class BuglyPlugin implements Plugin<Project> {
         String variantName = variant.name.capitalize()
 
         // Create task for uploading symtab file
-        def buglyTask = project.task("upload${variantName}SymtabFile") << {
+        def buglyTask = project.task("upload${variantName}SymtabFile") doLast {
 
             // Check for execution
             if (false == project.bugly.execute) {
