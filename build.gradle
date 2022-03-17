@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 //apply plugin: 'maven'
 //apply plugin: 'com.jfrog.bintray'
 
-group = "com.github.tencent.bugly"
+group = "com.github.forrest-x"
 version = "1.0.0"
 
 def symtabToolVersion = '3.3.4'
